@@ -1,0 +1,8 @@
+.project
+*/.project
+/*.iml
+.idea/
+.vagrant
+*.rpm
+/vagrant/*.vdi
+*.DS_Store
