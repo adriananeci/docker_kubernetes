@@ -4,6 +4,7 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 BOX_IMAGE="centos/7"
+NAME="dockerhost"
 
 required_plugins = %w(vagrant-vbguest vagrant-share)
 
@@ -12,8 +13,21 @@ required_plugins.each do |plugin|
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "4096", "--cpus", "4", "--ioapic", "on"]
+    vb.name = NAME
+    ### Add a second disk for docker thinpool lvm
+    # Get disk path
+    line = `"C:\\Program Files\\Oracle\\Virtualbox\\VBoxManage" list systemproperties | grep "Default machine folder"`
+    vb_machine_folder = line.split('folder:')[1].strip()
+    second_disk = File.join(vb_machine_folder, vb.name, 'disk2.vdi')
+
+    # Create and attach disk
+    unless File.exist?(second_disk)
+      vb.customize ['createhd', '--filename', second_disk, '--format', 'VDI', '--size', 10 * 1024]
+    end
+    vb.customize ['storageattach', :id, '--storagectl', 'IDE', '--port', 0, '--device', 1, '--type', 'hdd', '--medium', second_disk]
   end
 
   config.vm.synced_folder "applications", "/data/", id: "vagrant-root",
