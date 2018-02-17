@@ -1,4 +1,4 @@
-[init] Using Kubernetes version: v1.9.1
+[init] Using Kubernetes version: v1.9.3
 [init] Using Authorization modes: [Node RBAC]
 [preflight] Running pre-flight checks.
 [certificates] Generated ca certificate and key.
@@ -19,11 +19,11 @@
 [etcd] Wrote Static Pod manifest for a local etcd instance to "/etc/kubernetes/manifests/etcd.yaml"
 [init] Waiting for the kubelet to boot up the control plane as Static Pods from directory "/etc/kubernetes/manifests".
 [init] This might take a minute or longer if the control plane images have to be pulled.
-[apiclient] All control plane components are healthy after 53.004506 seconds
+[apiclient] All control plane components are healthy after 51.052664 seconds
 [uploadconfig] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
 [markmaster] Will mark node master.local as master by adding a label and a taint
 [markmaster] Master master.local tainted and labelled with key/value: node-role.kubernetes.io/master=""
-[bootstraptoken] Using token: b652eb.9c24ab61c719895a
+[bootstraptoken] Using token: 172868.a198a6ac31816c5d
 [bootstraptoken] Configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
 [bootstraptoken] Configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
 [bootstraptoken] Configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
@@ -46,5 +46,5 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 You can now join any number of machines by running the following on each node
 as root:
 
-  kubeadm join --token b652eb.9c24ab61c719895a 192.168.100.100:6443 --discovery-token-ca-cert-hash sha256:c24fdc96968d44067a663dac7d8a52122baa59107bdf393779feae3a66cd409f
+  kubeadm join --token 172868.a198a6ac31816c5d 192.168.100.100:6443 --discovery-token-ca-cert-hash sha256:93a811436a23bb0cd67a3ba110d40a1aa0eba0369dde08d775523e04fde977fe
 
