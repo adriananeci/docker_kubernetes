@@ -14,13 +14,21 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.synced_folder "data", "/data/", id: "vagrant-root",
-    owner: "vagrant",
-    group: "vagrant",
-    mount_option: ["dmode=777,fmode=777"]
-
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "4096", "--cpus", "4", "--ioapic", "on"]
+  end
+
+  config.vm.synced_folder "data", "/data/", id: "vagrant-root",
+                          owner: "vagrant",
+                          group: "vagrant",
+                          mount_option: ["dmode=777,fmode=777"]
+  # docker machine
+  config.vm.define "dockerhost", autostart:false do |dockerhost|
+    dockerhost.vm.box = BOX_IMAGE
+    dockerhost.vm.network :private_network, ip:"192.168.100.99"
+    dockerhost.vm.network :forwarded_port, gu est: 22, host: 22199, id: 'ssh'
+    dockerhost.vm.hostname = 'dockerhost.local'
+    dockerhost.vm.synced_folder "data", "/data/", disabled: true
   end
 
   # master node
