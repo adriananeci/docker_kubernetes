@@ -6,3 +6,8 @@
 *.rpm
 /vagrant/*.vdi
 *.DS_Store
+docker/.vagrant/*
+kubernetes/.vagrant/*
+kubernetes/initial_cluster_setup/cluster_admin_token.txt
+kubernetes/initial_cluster_setup/.kubeadmin_init
+
