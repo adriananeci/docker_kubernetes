@@ -18,12 +18,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "4096", "--cpus", "4", "--ioapic", "on"]
     vb.name = NAME
     ### Add a second disk for docker thinpool lvm
-    # Get disk path
-    line = `"C:\\Program Files\\Oracle\\Virtualbox\\VBoxManage" list systemproperties | grep "Default machine folder"`
-    vb_machine_folder = line.split('folder:')[1].strip()
-    second_disk = File.join(vb_machine_folder, vb.name, 'disk2.vdi')
-
-    # Create and attach disk
+    # # Get disk path
+    # line = `"C:\\Program Files\\Oracle\\Virtualbox\\VBoxManage" list systemproperties | grep "Default machine folder"`
+    # vb_machine_folder = line.split('folder:')[1].strip()
+    # second_disk = File.join(vb_machine_folder, vb.name, 'disk2.vdi')
+    #
+    # # Create and attach disk
+    second_disk = ".vagrant/machines/" + NAME + "/virtualbox/disk2.vdi"
+    
     unless File.exist?(second_disk)
       vb.customize ['createhd', '--filename', second_disk, '--format', 'VDI', '--size', 10 * 1024]
     end
