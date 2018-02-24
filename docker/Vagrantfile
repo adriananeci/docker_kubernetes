@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #
     # # Create and attach disk
     second_disk = ".vagrant/machines/" + NAME + "/virtualbox/disk2.vdi"
-    
+
     unless File.exist?(second_disk)
       vb.customize ['createhd', '--filename', second_disk, '--format', 'VDI', '--size', 10 * 1024]
     end
