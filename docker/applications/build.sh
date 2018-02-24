@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-docker build . -t lab/myapp
+docker build . -t local/lab_app
 
