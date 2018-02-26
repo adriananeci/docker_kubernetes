@@ -9,7 +9,7 @@ kubeadm init --apiserver-advertise-address=192.168.100.100 --pod-network-cidr=10
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
-kubectl apply -f /data/initial_cluster_setup/dashboard/flannel/kube-flannel.yml
+kubectl apply -f /data/initial_cluster_setup/flannel/kube-flannel.yml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 kubectl apply -f /data/initial_cluster_setup/dashboard/dashboard-svc.yaml
 kubectl apply -f /data/initial_cluster_setup/rbac/rbac.yaml
