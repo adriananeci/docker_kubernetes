@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: etcd-deployment
   labels:
-    app: workshop
+    app: web
 spec:
   replicas: 0
   selector:
     matchLabels:
-      app: workshop
+      app: web
   template:
     metadata:
       labels:
-        app: workshop
+        app: web
     spec:
       containers:
       - name: etcd
