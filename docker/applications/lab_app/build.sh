@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-docker build . -t workshop/lab_app
-
+docker build -t workshop/lab_app .
