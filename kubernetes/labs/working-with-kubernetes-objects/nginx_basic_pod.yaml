@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-basic-pod
+#  namespace: dev
+#  labels:
+#    release : stable
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.7.9
+      ports:
+        - name: http
+          protocol: TCP
+          containerPort: 8080
+
