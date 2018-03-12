@@ -36,6 +36,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                                      owner: "vagrant",
                                      group: "vagrant",
                                      mount_option: ["dmode=777,fmode=777"]
+
+  config.vm.synced_folder "../../", "/repo/", id: "vagrant-repo",
+                          owner: "vagrant",
+                          group: "vagrant",
+                          mount_option: ["dmode=777,fmode=777"]
+
   # docker machine
   #config.vm.define "dockerhost", autostart:false do |dockerhost|
   config.vm.define "dockerhost" do |dockerhost|
