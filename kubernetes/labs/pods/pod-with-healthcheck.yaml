@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: pod-with-healthcheck
+  namespace: lab-pods
 spec:
   containers:
   - name: nginx

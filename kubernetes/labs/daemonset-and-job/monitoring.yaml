@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+ name: monitoring
+ namespace: lab-daemonset-and-job
+ labels:
+   k8s-app: get-hostname
+spec:
+  template:
+    metadata:
+      labels:
+        name: monitoring
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:1.7.6
+        volumeMounts:
+        - name: shared-data
+          mountPath: /usr/share/nginx/html/index.html
+      volumes:
+      - name: shared-data
+        hostPath:
+          path: /etc/hostname
