@@ -1,0 +1,14 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+   name: local01
+   labels:
+      type: local
+spec:
+   capacity:
+      storage: 10Gi
+   persistentVolumeReclaimPolicy:  Delete
+   accessModes:
+   - ReadWriteOnce
+   hostPath:
+    path: "/tmp/data01"
