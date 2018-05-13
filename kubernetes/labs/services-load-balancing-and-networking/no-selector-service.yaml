@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: my-service
+ namespace: lab-services-load-balancing-and-networking
+spec:
+ ports:
+ - protocol: TCP
+   port: 8080
+   targetPort: 80
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+ name: my-service
+ namespace: lab-services-load-balancing-and-networking
+subsets:
+ - addresses:
+     - ip: 1.2.3.4
+   ports:
+     - port: 80
