@@ -3,14 +3,12 @@ kind: DaemonSet
 metadata:
   labels:
     app: nginx
-    ssd: "true"
   name: nginx-fast-storage
 spec:
   template:
     metadata:
       labels:
         app: nginx
-        ssd: "true"
     spec:
       nodeSelector:
         ssd: "true"
